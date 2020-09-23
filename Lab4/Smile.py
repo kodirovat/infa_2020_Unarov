@@ -1,42 +1,24 @@
-# ex5
-
-import random
+import pygame as pg
 import numpy as np
-import turtle as tr
 
-number_of_turtles = 5
-poolwidth = 100
-poolheight = 100
-dt = 0.05
-a = 10000
+process = 1
 
-pool = [tr.Turtle(shape='circle') for i in range(number_of_turtles)]
-X = []
-Y = []
-Vx = []
-Vy = []
+pg.init()
 
-for i in range(number_of_turtles):  # Создаем массив координат атомов газа
-    X.append(random.randint(-poolwidth, poolwidth))
-    Y.append(random.randint(-poolheight, poolheight))
-    Vx.append(random.randint(-10, 10))
-    Vy.append(random.randint(-10, 10))
-    pool[i].penup()
-    pool[i].speed(0)
+screen = pg.display.set_mode((400, 400))
+pg.display.set_caption("Злой смайлик")
 
-while True:
-    for i in range(number_of_turtles):
-        for j in range(number_of_turtles):
-            if i != j:
-                Vx[i] += a * (X[i] - X[j]) / ((X[i] - X[j]) ** 2 + (Y[i] - Y[j]) ** 2) ** (3 / 2) * dt
-                Vy[i] += a * (Y[i] - Y[j]) / ((X[i] - X[j]) ** 2 + (Y[i] - Y[j]) ** 2) ** (3 / 2) * dt
-
-        if (X[i] > poolwidth or X[i] < -poolwidth):
-            Vx[i] = -Vx[i]
-        if (Y[i] > poolwidth or Y[i] < -poolwidth):
-            Vy[i] = -Vy[i]
-
-        X[i] += Vx[i] * dt
-        Y[i] += Vy[i] * dt
-
-        pool[i].goto(X[i], Y[i])
+while process:
+    pg.draw.rect(screen, (155, 155, 155), (0, 0, 400, 400))
+    pg.draw.circle(screen, (255, 191, 0), (200, 200), 50)
+    pg.draw.circle(screen, (200, 0, 0), (220, 190), 12)
+    pg.draw.circle(screen, (200, 0, 0), (180, 190), 12)
+    pg.draw.circle(screen, (0, 0, 0), (220, 190), 5)
+    pg.draw.circle(screen, (0, 0, 0), (180, 190), 5)
+    pg.draw.line(screen, (0, 0, 0), (190, 180), (170, 160), 10)
+    pg.draw.line(screen, (0, 0, 0), (210, 180), (230, 160), 10)
+    pg.draw.line(screen, (0, 0, 0), (180, 220), (220, 220), 12)
+    pg.display.update()
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            process = False
