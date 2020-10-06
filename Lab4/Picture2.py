@@ -22,6 +22,7 @@ dark_gray = (30, 30, 30)
 light_gray = (100, 100, 100)
 light_orange = (255, 127, 116)
 
+
 # Создаем фон
 pg.draw.rect(screen, green, (0, 0, screen_width, screen_height))
 pg.draw.rect(screen, gray, (0, 400, screen_width, screen_height))
