@@ -19,9 +19,11 @@ gray = (70, 70, 70)
 yellow = (236, 205, 0)
 brown = (68, 0, 19)
 orange = (230, 145, 0)
+red = (255, 33, 0)
 dark_gray = (30, 30, 30)
 light_gray = (100, 100, 100)
 light_orange = (255, 127, 116)
+
 
 # Создаем фон
 pg.draw.rect(screen, green, (0, 0, screen_width, screen_height))
@@ -74,7 +76,7 @@ def hedgehog(x, y):
         pg.draw.polygon(screen, dark_gray, [A, B, C], )
         pg.draw.polygon(screen, black, [A, B, C], 1)
 
-    pg.draw.ellipse(screen, (255, 33, 0),
+    pg.draw.ellipse(screen, red,
                     (screen_width * x + hedgehog_width - 100, screen_height * y + hedgehog_height - 140, 70, 70))
     pg.draw.ellipse(screen, orange,
                     (screen_width * x + hedgehog_width - 200, screen_height * y + hedgehog_height - 140, 50, 50))
@@ -102,7 +104,7 @@ def hedgehog(x, y):
         B = [screen_width * x + a + x0 + 20 * np.cos(k), screen_height * y + b + y0 - 20 * np.sin(k)]
         C = [screen_width * x + a + x0 + 5 - 90 * np.sin(k), screen_height * y + b + y0 - 90 * np.cos(k)]
         pg.draw.polygon(screen, dark_gray, [A, B, C], )
-        pg.draw.polygon(screen, (0, 0, 0), [A, B, C], 1)
+        pg.draw.polygon(screen, black, [A, B, C], 1)
 
 
 hedgehog(0.6, 0.7)
